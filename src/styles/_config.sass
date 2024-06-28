@@ -1,0 +1,70 @@
+@include font('Merriweather', normal, 400, '../fonts/Merriweather/Merriweather-Regular.woff2')
+@include font('Merriweather', normal, 700, '../fonts/Merriweather/Merriweather-Bold.woff2')
+
+@include font('Golos Text', normal, 400, '../fonts/GolosText/GolosText-Regular.woff2')
+@include font('Golos Text', normal, 500, '../fonts/GolosText/GolosText-Medium.woff2')
+@include font('Golos Text', normal, 600, '../fonts/GolosText/GolosText-Semibold.woff2')
+@include font('Golos Text', normal, 700, '../fonts/GolosText/GolosText-Bold.woff2')
+
+html
+  font-size: 10px
+  font-size: calc(100vw / 375 * 10)
+  @media (min-width: $screen-md)
+    font-size: calc(100vw / 1366 * 10)
+
+body
+  font-size: 1.8rem
+  font-family: 'Golos Text', sans-serif
+  line-height: 1.5
+  @media (min-width: $screen-md)
+    font-size: 1.8rem
+
+.page
+  overflow: hidden
+
+.container
+  max-width: 125.2rem
+  padding: 0 1.5rem
+  margin: 0 auto
+
+.section
+  padding: 3rem 0
+
+.title
+  text-transform: uppercase
+  font-family: Merriweather, sans-serif
+
+.title--h1
+  line-height: 1.1
+  font-size: 3.6rem
+  @media (min-width: $screen-md)
+    font-size: 6rem
+
+.button
+  display: inline-block
+  max-width: 26.3rem
+  padding: 1.3rem 5rem
+  font-size: 1.6rem
+  line-height: 1.3
+  text-align: center
+  border-radius: 10rem
+  border: .2rem solid black
+  font-weight: 500
+  color: black
+  transition: .3s
+  &--black
+    background: black
+    color: white
+    &:hover
+      background: #FBCE51
+      border: .2rem solid #FBCE51
+      color: black
+  &--bordered
+    &:hover
+      background: black
+      border: .2rem solid black
+      color: white
+
+// @keyframes scroll
+//   0%  transform: translateX(0)
+//   100%  transform: translateX(-$ticker.scrollWidth / 2px)

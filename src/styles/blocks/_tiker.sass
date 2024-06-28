@@ -1,0 +1,28 @@
+// tiker
+
+.ticker
+  background: #F54932
+  display: flex
+  overflow: hidden
+  &-list
+    padding: 1.4rem 0
+    display: flex
+    color: white
+    text-transform: uppercase
+    font-family: Merriweather, sans-serif
+    font-size: 2.2rem
+    animation: scroll 40s linear infinite
+    &__item
+      white-space: nowrap
+      &::before
+        content: '•'
+        display: inline-block
+        margin: 0 2.5rem
+
+// scroll
+
+@keyframes scroll
+  0%
+    transform: translateX(0)
+  100%
+    transform: translateX(-100%)

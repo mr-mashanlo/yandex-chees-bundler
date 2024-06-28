@@ -1,0 +1,73 @@
+// Font
+
+@mixin font($name, $style, $weight, $url)
+  @font-face
+    font-family: $name
+    font-style: $style
+    font-weight: $weight
+    font-display: block
+    src: url($url) format('woff2')
+
+// Title
+
+@mixin title-xs($name, $height, $size)
+  .title#{$name}, .subtitle#{$name}
+    line-height: $height
+    font-size: $size
+
+@mixin title-md($name, $height, $size)
+  .title#{$name}, .subtitle#{$name}
+    @media ( $screen-md )
+      line-height: $height
+      font-size: $size
+
+@mixin title-lg($name, $height, $size)
+  .title#{$name}, .subtitle#{$name}
+    @media ( $screen-lg )
+      line-height: $height
+      font-size: $size
+
+@mixin title-xl($name, $height, $size)
+  .title#{$name}, .subtitle#{$name}
+    @media ( $screen-xl )
+      line-height: $height
+      font-size: $size
+
+// Button
+
+@mixin button-xs($name, $padding, $size)
+  .button#{$name}
+    padding: $padding
+    font-size: $size
+
+@mixin button-md($name, $padding, $size)
+  .button#{$name}
+    @media ( $screen-md )
+      padding: $padding
+      font-size: $size
+
+@mixin button-lg($name, $padding, $size)
+  .button#{$name}
+    @media ( $screen-lg )
+      padding: $padding
+      font-size: $size
+
+@mixin button-xl($name, $padding, $size)
+  .button#{$name}
+    @media ( $screen-xl )
+      padding: $padding
+      font-size: $size
+
+@mixin button-theme($name, $transform, $color, $background, $radius, $border)
+  .button#{$name}
+    color: $color
+    background: $background
+    border-radius: $radius
+    border: $border
+    text-transform: $transform
+
+@mixin button-hover($name, $color, $background, $border)
+  .button#{$name}:hover
+    color: $color
+    background: $background
+    border: $border
