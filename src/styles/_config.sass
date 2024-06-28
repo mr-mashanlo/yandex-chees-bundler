@@ -40,6 +40,12 @@ body
   @media (min-width: $screen-md)
     font-size: 6rem
 
+.title--h3
+  line-height: 1.35
+  font-size: 2.8rem
+  @media (min-width: $screen-md)
+    font-size: 3.6rem
+
 .button
   display: inline-block
   max-width: 26.3rem
@@ -56,8 +62,8 @@ body
     background: black
     color: white
     &:hover
-      background: #FBCE51
-      border: .2rem solid #FBCE51
+      background: $yellow
+      border: .2rem solid $yellow
       color: black
   &--bordered
     &:hover
@@ -65,6 +71,10 @@ body
       border: .2rem solid black
       color: white
 
-// @keyframes scroll
-//   0%  transform: translateX(0)
-//   100%  transform: translateX(-$ticker.scrollWidth / 2px)
+.accent-text
+  color: $red
+  font-weight: 700
+
+.old-price
+  text-decoration: line-through
+  text-decoration-color: $red

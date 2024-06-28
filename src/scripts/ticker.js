@@ -1,6 +1,8 @@
-function ticker() {
-  const ticker = document.querySelector( '.ticker' );
-  ticker.innerHTML = doubleTickerElements( ticker );
+function ticker( options ) {
+  const ticker = document.querySelectorAll( options.element );
+  ticker.forEach( item => {
+    item.innerHTML = doubleTickerElements( item );
+  } );
 }
 
 function doubleTickerElements( ticker ) {

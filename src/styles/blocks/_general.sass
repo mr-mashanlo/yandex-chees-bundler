@@ -39,3 +39,60 @@
     margin-top: 4rem
     display: flex
     gap: 1.5rem
+
+// info
+
+.info
+  padding-top: 8rem
+  &-header
+    display: flex
+    gap: 2rem
+    justify-content: space-between
+    align-items: center
+    &__title
+      max-width: 76.5rem
+    &__image
+      max-width: 39.4rem
+
+  &-content
+    margin-top: 3rem
+    display: flex
+    gap: 2rem
+    &__image
+      width: 53rem
+      margin-left: -3.1rem
+    &__title
+      margin-top: 3.4rem
+    &__table
+      margin-top: 4.8rem
+    &__address
+      margin-top: 3rem
+      color: $blue
+      font-size: 2rem
+
+  &-table
+    width: 100%
+    font-size: 2rem
+    color: #313131
+    text-align: left
+    tr
+      &:not(:last-of-type)
+        border-bottom: .2rem solid #D0D0D0
+    th
+      min-width: 30.5rem
+      padding: 1.2rem 1.2rem 1.2rem 0
+      border-right: .2rem solid #D0D0D0
+      color: #6F6F6F
+    td
+      width: 100%
+      padding: 1.2rem
+      font-weight: 600
+
+// footer
+
+.footer
+  padding: 4rem 0 7rem 0
+  background: #E9DED4
+  color: #6F6F6F
+  &__text
+    font-size: 1.6rem
