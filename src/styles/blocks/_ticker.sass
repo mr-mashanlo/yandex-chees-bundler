@@ -5,13 +5,16 @@
   display: flex
   overflow: hidden
   &-list
-    padding: 1.4rem 0
+    padding: .8rem 0
     display: flex
     color: white
     text-transform: uppercase
     font-family: Merriweather, sans-serif
-    font-size: 2.2rem
+    font-size: 1.5rem
     animation: scroll 40s linear infinite
+    @media (min-width: $screen-md)
+      padding: 1.4rem 0
+      font-size: 2.2rem
     &__item
       white-space: nowrap
       &::before

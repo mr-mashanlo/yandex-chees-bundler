@@ -13,6 +13,7 @@ class Slider {
   }
 
   init = () => {
+    this.handleWindowResize();
     this.setSlidesWidth();
     this.handleControlsClick();
     this.displayPosition();
@@ -81,6 +82,16 @@ class Slider {
   displayTotalSlides = () => {
     const totalSlides = this.controls.querySelector( '.slider-counter__total-slides' );
     totalSlides.textContent = this.getTotalSlides();
+  };
+
+  handleWindowResize = () => {
+    window.outerWidth <= 500 ? this.slides = 1 : this.slides = 3;
+    window.outerWidth <= 500 ? this.position = 1 : this.position = 3;
+
+    window.addEventListener( 'resize', event => {
+      event.target.outerWidth <= 500 ? this.slides = 1 : this.slides = 3;
+      event.target.outerWidth <= 500 ? this.position = 1 : this.position = 3;
+    } );
   };
 
 }
