@@ -13,6 +13,7 @@ class Slider {
     this.options = { ...this.defaultOptions, ...options };
     this.position = this.options.items;
     this.shift = 0;
+    this.animationInProgress = false;
 
     this.element = document.querySelector( this.options.element );
     this.slider = this.element.querySelector( '.slider-list' );
@@ -51,7 +52,13 @@ class Slider {
 
   displayDotsindicator = () => {
     const container = this.controls.querySelector( '.slider-indicator' );
-    const html = '<div class="slider-dots"></div>';
+    const dots = [];
+
+    for ( let i = 0; i < this.getTotalSlides(); i++ ) {
+      dots.push( `<span class="slider-dot__item ${this.position === i + 1 ? 'slider-dot__item--active' : ''}"></span>` );
+    }
+
+    const html = `<div class="slider-dot">${dots.join( '' )}</div>`;
     container.innerHTML = html;
   };
 
@@ -80,6 +87,8 @@ class Slider {
       const button = event.target.closest( 'button' );
       if ( !button ) return;
 
+      if ( this.animationInProgress ) return;
+
       if ( button.classList.contains( 'slider-control__prev' ) ) {
         this.position <= 1 ? this.position = this.getTotalSlides() : this.position -= 1;
         this.copyLastItemToStart();
@@ -87,7 +96,7 @@ class Slider {
         this.position >= this.getTotalSlides() ? this.position = 1 : this.position += 1;
         this.copyFirstItemToEnd();
       }
-      
+
       this.options.indicator === 'counter' ? this.displayCounterIndicator() : this.displayDotsindicator();
       this.options.loop ? null : this.updateButtonStatus();
     } );
@@ -100,14 +109,22 @@ class Slider {
   copyLastItemToStart = () => {
     const items = this.slider.querySelectorAll( '.slider-list__item' );
     const item = items[ this.getTotalSlides() -1 ];
-    setTimeout( () => { this.slider.prepend( item ); }, 400 );
+    this.animationInProgress = true;
+    setTimeout( () => {
+      this.slider.prepend( item );
+      this.animationInProgress = false;
+    }, 400 );
     this.addTransitionToItems( items, 'RIGHT' );
   };
 
   copyFirstItemToEnd = () => {
     const items = this.slider.querySelectorAll( '.slider-list__item' );
     const item = items[ 0 ];
-    setTimeout( () => { this.slider.append( item ); }, 400 );
+    this.animationInProgress = true;
+    setTimeout( () => {
+      this.slider.append( item );
+      this.animationInProgress = false;
+    }, 400 );
     this.addTransitionToItems( items, 'LEFT' );
   };
 
