@@ -145,6 +145,9 @@
 // stage
 
 .stage
+  padding-bottom: 9.2rem
+  @media (min-width: $screen-md)
+    padding-bottom: 17.3rem
   &__header
     max-width: 75rem
   &__description
@@ -166,16 +169,37 @@
       left: 50%
       z-index: 10
       transform: translateX(-46%) rotate(-3deg)
+      @media (min-width: $screen-md)
+        width: 40rem
+        top: auto
+        left: auto
+        bottom: -.2rem
+        right: -6.4rem
+        transform: translateX(0%) rotate(0deg)
   &-slider
     margin-top: 14.5rem
+    @media (min-width: $screen-md)
+      margin-top: 5.2rem
   &-wrapper
     height: 100%
     padding: 4.6rem 2rem 2rem
     background: url( '../images/stage-2.webp' ) center / cover no-repeat
+    @media (min-width: $screen-md)
+      padding: 0
+      display: grid
+      grid-template-columns: repeat(2, 1fr)
+      gap: 2rem
+      background: none
   &-card
     padding: 1.4rem 0
     display: flex
     gap: 1.5rem
+    @media (min-width: $screen-md)
+      height: 100%
+      padding: 1.8rem 2.2rem 1.8rem 2rem
+      background: url( '../images/stage-2.webp' ) center / cover no-repeat
+      font-size: 2rem
+      font-weight: 500
     &__number
       width: 3.6rem
       height: 3.6rem
@@ -191,6 +215,27 @@
       line-height: 1.25
   &-control
     margin-top: 2.6rem
+    @media (min-width: $screen-md)
+      display: none
+  .slider-list
+    @media (min-width: $screen-md)
+      display: grid
+      grid-template-columns: repeat(3, 1fr)
+      gap: 2rem
+    &__item
+      @media (min-width: $screen-md)
+        padding: 0
+      &:nth-of-type(1), &:nth-of-type(3)
+        @media (min-width: $screen-md)
+          grid-column: 1 / 3
+      &:nth-of-type(2)
+        @media (min-width: $screen-md)
+          grid-column: 3 / 4
+          grid-row: 1 / 3
+      &:nth-of-type(5)
+        grid-column: 2 / 4
+        .stage-card
+          padding-right: 30rem
 
 // member
 
@@ -207,6 +252,7 @@
   &-control
     margin-top: 4.3rem
     @media (min-width: $screen-md)
+      margin: 0
       position: absolute
       top: .5rem
       right: 1.5rem
@@ -215,7 +261,7 @@
   &-card
     text-align: center
     &__image
-      width: 25rem
+      width: 24rem
       @media (min-width: $screen-md)
         width: 32rem
     &__name

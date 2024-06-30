@@ -5,9 +5,10 @@
     display: flex
     &__item
       flex-shrink: 0
-      transition: .5s
       padding-right: 3rem
       box-sizing: content-box
+      @media (min-width: $screen-md)
+        padding: 0
   &-control
     display: flex
     gap: 1.5rem
