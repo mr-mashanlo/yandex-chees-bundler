@@ -84,49 +84,132 @@
         </h2>
       </div>
 
+      <div class="stage-content">
+        <img src="images/stage-1.webp" alt="самолет" class="stage-content__image">
+        <div class="slider stage-slider">
+          <ul class="slider-list">
+            <li class="slider-list__item">
+              <div class="stage-wrapper">
+                <div class="stage-card">
+                  <p class="stage-card__number">1</p>
+                  <p class="stage-card__text">Строительство железнодорожной магистрали Москва-Васюки</p>
+                </div>
+                <div class="stage-card">
+                  <p class="stage-card__number">2</p>
+                  <p class="stage-card__text">Открытие фешенебельной гостиницы «Проходная пешка» и других небоскрёбов</p>
+                </div>
+              </div>
+            </li>
+            <li class="slider-list__item">
+              <div class="stage-wrapper">
+                <div class="stage-card">
+                  <p class="stage-card__number">3</p>
+                  <p class="stage-card__text">Поднятие сельского хозяйства в радиусе на тысячу километров: производство овощей, фруктов, икры, шоколадных конфет</p>
+                </div>
+              </div>
+            </li>
+            <li class="slider-list__item">
+              <div class="stage-wrapper">
+                <div class="stage-card">
+                  <p class="stage-card__number">4</p>
+                  <p class="stage-card__text">Строительство дворца для турнира</p>
+                </div>
+                <div class="stage-card">
+                  <p class="stage-card__number">5</p>
+                  <p class="stage-card__text">Размещение гаражей для гостевого автотранспорта</p>
+                </div>
+              </div>
+            </li>
+            <li class="slider-list__item">
+              <div class="stage-wrapper">
+                <div class="stage-card">
+                  <p class="stage-card__number">6</p>
+                  <p class="stage-card__text">Постройка сверхмощной радиостанции для передачи всему миру сенсационных результатов</p>
+                </div>
+              </div>
+            </li>
+            <li class="slider-list__item">
+              <div class="stage-wrapper">
+                <div class="stage-card">
+                  <p class="stage-card__number">7</p>
+                  <p class="stage-card__text">Создание аэропорта «Большие Васюки» с регулярным отправлением почтовых самолётов и дирижаблей во все концы света, включая Лос-Анжелос и Мельбурн</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <div class="slider-control stage-control">
+            <button class="circle-button slider-control__button slider-control__prev">
+              <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="18" cy="18" r="18" transform="rotate(-180 18 18)" fill="#313131" />
+                <path d="M20.0766 24.923L13.1536 17.9999L20.0766 11.0768" stroke="white" stroke-width="1.63636" stroke-linecap="square" />
+              </svg>
+            </button>
+            <div class="slider-indicator"></div>
+            <button class="circle-button slider-control__button slider-control__next">
+              <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="18" cy="18" r="18" fill="#313131" />
+                <path d="M15.9234 11.0769L22.8464 18L15.9234 24.9231" stroke="white" stroke-width="1.63636" stroke-linecap="square" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <section class="section member" id="member">
     <div class="container member__container">
       <h2 class="title title--h2">Участники турнира</h2>
-      <div class="slider member__slider">
+      <div class="slider member-slider">
         <ul class="slider-list">
           <li class="slider-list__item">
-            <img src="images/member-1.webp" alt="Хозе-Рауль Капабланка" class="slider-list__image">
-            <p class="slider-list__name">Хозе-Рауль Капабланка</p>
-            <p class="slider-list__description">Чемпион мира по шахматам</p>
-            <a href="#" class="slider-list__button button button--small button--blue">Подробнее</a>
+            <div class="member-card">
+              <img src="images/member-1.webp" alt="Хозе-Рауль Капабланка" class="member-card__image">
+              <p class="member-card__name">Хозе-Рауль Капабланка</p>
+              <p class="member-card__description">Чемпион мира по шахматам</p>
+              <a href="#" class="member-card__button button button--small button--blue">Подробнее</a>
+            </div>
           </li>
           <li class="slider-list__item">
-            <img src="images/member-1.webp" alt="Эммануил Ласкер" class="slider-list__image">
-            <p class="slider-list__name">Эммануил Ласкер</p>
-            <p class="slider-list__description">Чемпион мира по шахматам</p>
-            <a href="#" class="slider-list__button button button--small button--blue">Подробнее</a>
+            <div class="member-card">
+              <img src="images/member-1.webp" alt="Эммануил Ласкер" class="member-card__image">
+              <p class="member-card__name">Эммануил Ласкер</p>
+              <p class="member-card__description">Чемпион мира по шахматам</p>
+              <a href="#" class="member-card__button button button--small button--blue">Подробнее</a>
+            </div>
           </li>
           <li class="slider-list__item">
-            <img src="images/member-1.webp" alt="Александр Алехин" class="slider-list__image">
-            <p class="slider-list__name">Александр Алехин</p>
-            <p class="slider-list__description">Чемпион мира по шахматам</p>
-            <a href="#" class="slider-list__button button button--small button--blue">Подробнее</a>
+            <div class="member-card">
+              <img src="images/member-1.webp" alt="Александр Алехин" class="member-card__image">
+              <p class="member-card__name">Александр Алехин</p>
+              <p class="member-card__description">Чемпион мира по шахматам</p>
+              <a href="#" class="member-card__button button button--small button--blue">Подробнее</a>
+            </div>
           </li>
           <li class="slider-list__item">
-            <img src="images/member-1.webp" alt="Арон Нимцович" class="slider-list__image">
-            <p class="slider-list__name">Арон Нимцович</p>
-            <p class="slider-list__description">Чемпион мира по шахматам</p>
-            <a href="#" class="slider-list__button button button--small button--blue">Подробнее</a>
+            <div class="member-card">
+              <img src="images/member-1.webp" alt="Арон Нимцович" class="member-card__image">
+              <p class="member-card__name">Арон Нимцович</p>
+              <p class="member-card__description">Чемпион мира по шахматам</p>
+              <a href="#" class="member-card__button button button--small button--blue">Подробнее</a>
+            </div>
           </li>
           <li class="slider-list__item">
-            <img src="images/member-1.webp" alt="Рихард Рети" class="slider-list__image">
-            <p class="slider-list__name">Рихард Рети</p>
-            <p class="slider-list__description">Чемпион мира по шахматам</p>
-            <a href="#" class="slider-list__button button button--small button--blue">Подробнее</a>
+            <div class="member-card">
+              <img src="images/member-1.webp" alt="Рихард Рети" class="member-card__image">
+              <p class="member-card__name">Рихард Рети</p>
+              <p class="member-card__description">Чемпион мира по шахматам</p>
+              <a href="#" class="member-card__button button button--small button--blue">Подробнее</a>
+            </div>
           </li>
           <li class="slider-list__item">
-            <img src="images/member-1.webp" alt="Остап Бендер" class="slider-list__image">
-            <p class="slider-list__name">Остап Бендер</p>
-            <p class="slider-list__description">Гроссмейстер</p>
-            <a href="#" class="slider-list__button button button--small button--blue">Подробнее</a>
+            <div class="member-card">
+              <img src="images/member-1.webp" alt="Остап Бендер" class="member-card__image">
+              <p class="member-card__name">Остап Бендер</p>
+              <p class="member-card__description">Гроссмейстер</p>
+              <a href="#" class="member-card__button button button--small button--blue">Подробнее</a>
+            </div>
           </li>
         </ul>
         <div class="slider-control member-control">
@@ -136,9 +219,7 @@
               <path d="M20.0766 24.923L13.1536 17.9999L20.0766 11.0768" stroke="white" stroke-width="1.63636" stroke-linecap="square" />
             </svg>
           </button>
-          <div class="slider-counter">
-            <span class="slider-counter__position">0</span> / <span class="slider-counter__total-slides">0</span>
-          </div>
+          <div class="slider-indicator"></div>
           <button class="member-control__button slider-control__button slider-control__next circle-button">
             <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="18" cy="18" r="18" fill="#313131" />

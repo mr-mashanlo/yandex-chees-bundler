@@ -1,13 +1,23 @@
 class Slider {
 
+  defaultOptions = {
+    element: '.slider',
+    items: 3,
+    speed: 4,
+    autoplay: false,
+    loop: false,
+    indicator: 'counter'
+  };
+
   constructor( options ) {
-    this.element = document.querySelector( options.element );
-    this.slider = this.element.querySelector( '.slider-list' );
-    this.sliderSlides = this.slider.querySelectorAll( '.slider-list__item' );
-    this.controls = this.element.querySelector( '.slider-control' );
-    this.slides = options.slides;
-    this.position = options.slides;
+    this.options = { ...this.defaultOptions, ...options };
+    this.position = this.options.items;
     this.shift = 0;
+
+    this.element = document.querySelector( this.options.element );
+    this.slider = this.element.querySelector( '.slider-list' );
+    this.items = this.slider.querySelectorAll( '.slider-list__item' );
+    this.controls = this.element.querySelector( '.slider-control' );
 
     this.init();
   }
@@ -16,14 +26,38 @@ class Slider {
     this.handleWindowResize();
     this.setSlidesWidth();
     this.handleControlsClick();
-    this.displayPosition();
-    this.displayTotalSlides();
-    this.updateButtonStatus();
+
+    this.copyLastItemToStart();
+    this.setDefaultSliderPosition();
+
+    this.options.indicator === 'counter' ? this.displayCounterIndicator() : this.displayDotsindicator();
+    this.options.loop ? null : this.updateButtonStatus();
+    this.options.autoplay ? this.startAutoplay() : null;
+  };
+
+  getSlideWidth = () => {
+    return this.items[0].offsetWidth;
+  };
+
+  getTotalSlides = () => {
+    return this.items.length;
+  };
+
+  displayCounterIndicator = () => {
+    const container = this.controls.querySelector( '.slider-indicator' );
+    const html = `<div class="slider-counter"><span class="slider-counter__position">${this.position}</span> / <span class="slider-counter__total-slides">${this.getTotalSlides()}</span></div>`;
+    container.innerHTML = html;
+  };
+
+  displayDotsindicator = () => {
+    const container = this.controls.querySelector( '.slider-indicator' );
+    const html = '<div class="slider-dots"></div>';
+    container.innerHTML = html;
   };
 
   setSlidesWidth = () => {
-    this.sliderSlides.forEach( slide => {
-      slide.style.width = `${100 / this.slides}%`;
+    this.items.forEach( slide => {
+      slide.style.width = `${100 / this.options.items}%`;
     } );
   };
 
@@ -31,7 +65,7 @@ class Slider {
     const prev = this.controls.querySelector( '.slider-control__prev' );
     const next = this.controls.querySelector( '.slider-control__next' );
 
-    if ( this.position <= this.slides ) {
+    if ( this.position <= this.options.items ) {
       prev.disabled = true;
     } else if ( this.position >= this.getTotalSlides() ) {
       next.disabled = true;
@@ -42,56 +76,66 @@ class Slider {
   };
 
   handleControlsClick = () => {
-    this.controls.addEventListener( 'click', event => { 
+    this.controls.addEventListener( 'click', event => {
       const button = event.target.closest( 'button' );
-      if ( !button ) return; 
+      if ( !button ) return;
 
       if ( button.classList.contains( 'slider-control__prev' ) ) {
-        this.position = this.position - 1;
-        this.shift = this.shift - this.getSlideWidth();
+        this.position <= 1 ? this.position = this.getTotalSlides() : this.position -= 1;
+        this.copyLastItemToStart();
       } else if ( button.classList.contains( 'slider-control__next' ) ) {
-        this.position = this.position + 1;
-        this.shift = this.shift + this.getSlideWidth();
+        this.position >= this.getTotalSlides() ? this.position = 1 : this.position += 1;
+        this.copyFirstItemToEnd();
       }
-
-      this.updateButtonStatus();
-      this.displayPosition();
-      this.moveSlides();
+      
+      this.options.indicator === 'counter' ? this.displayCounterIndicator() : this.displayDotsindicator();
+      this.options.loop ? null : this.updateButtonStatus();
     } );
   };
 
-  moveSlides = () => {
-    this.sliderSlides.forEach( item => {
-      item.style.transform = `translateX( -${this.shift}px )`;
+  setDefaultSliderPosition = () => {
+    this.slider.style.transform = `translateX(${-this.getSlideWidth()}px)`;
+  };
+
+  copyLastItemToStart = () => {
+    const items = this.slider.querySelectorAll( '.slider-list__item' );
+    const item = items[ this.getTotalSlides() -1 ];
+    setTimeout( () => { this.slider.prepend( item ); }, 400 );
+    this.addTransitionToItems( items, 'RIGHT' );
+  };
+
+  copyFirstItemToEnd = () => {
+    const items = this.slider.querySelectorAll( '.slider-list__item' );
+    const item = items[ 0 ];
+    setTimeout( () => { this.slider.append( item ); }, 400 );
+    this.addTransitionToItems( items, 'LEFT' );
+  };
+
+  addTransitionToItems = ( items, direct ) => {
+    items.forEach( item => {
+      item.style.transition = '0.4s';
+      item.style.transform = `translateX( ${direct === 'LEFT' ? -this.getSlideWidth() : this.getSlideWidth()}px )`;
     } );
-  };
 
-  getSlideWidth = () => {
-    return this.sliderSlides[0].offsetWidth;
-  };
-
-  getTotalSlides = () => {
-    return this.sliderSlides.length;
-  };
-  
-  displayPosition = () => {
-    const position = this.controls.querySelector( '.slider-counter__position' );
-    position.textContent = this.position;
-  };
-
-  displayTotalSlides = () => {
-    const totalSlides = this.controls.querySelector( '.slider-counter__total-slides' );
-    totalSlides.textContent = this.getTotalSlides();
+    setTimeout( () => {
+      items.forEach( item => {
+        item.style.transition = '0s';
+        item.style.transform = 'translateX( 0px )';
+      } );
+    }, 400 );
   };
 
   handleWindowResize = () => {
-    window.outerWidth <= 500 ? this.slides = 1 : this.slides = 3;
-    window.outerWidth <= 500 ? this.position = 1 : this.position = 3;
+    window.outerWidth < 500 ? this.options.items = 1 : this.options.items = 3;
+    window.outerWidth < 500 ? this.position = 1 : this.position = 3;
+  };
 
-    window.addEventListener( 'resize', event => {
-      event.target.outerWidth <= 500 ? this.slides = 1 : this.slides = 3;
-      event.target.outerWidth <= 500 ? this.position = 1 : this.position = 3;
-    } );
+  startAutoplay = () => {
+    setInterval( () => {
+      this.position >= this.getTotalSlides() ? this.position = 1 : this.position += 1;
+      this.copyFirstItemToEnd();
+      this.displayCounterIndicator();
+    }, this.options.speed * 1000 );
   };
 
 }

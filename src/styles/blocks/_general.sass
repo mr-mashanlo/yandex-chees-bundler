@@ -24,9 +24,10 @@
 // intro
 
 .intro
-  padding: 1.5rem 0
+  padding-top: 1.5rem
   padding-bottom: 29rem
   @media (min-width: $screen-md)
+    padding-top: 3rem
     padding-bottom: 13rem
   &__content
     max-width: 55rem
@@ -96,6 +97,7 @@
       @media (min-width: $screen-md)
         width: 53rem
         margin-left: -3.1rem
+        transform: scale(1)
     &__title
       margin-top: 4rem
       @media (min-width: $screen-md)
@@ -124,15 +126,16 @@
       padding: 1.1rem 0 .7rem 0
       @media (min-width: $screen-md)
         display: block
+        padding: 0
       &:not(:last-of-type)
-        border-bottom: .2rem solid #D0D0D0
+        border-bottom: .2rem solid $gray
     th
       padding: .3rem 0
       color: #6F6F6F
       @media (min-width: $screen-md)
         min-width: 30.5rem
         padding: 1.2rem 1.2rem 1.2rem 0
-        border-right: .2rem solid #D0D0D0
+        border-right: .2rem solid $gray
     td
       padding: .3rem 0
       font-weight: 600
@@ -154,6 +157,40 @@
       margin-top: 0
       margin-left: 1.5rem
       font-size: 2rem
+  &-content
+    position: relative
+    &__image
+      width: 34rem
+      position: absolute
+      top: -13rem
+      left: 50%
+      z-index: 10
+      transform: translateX(-46%) rotate(-3deg)
+  &-slider
+    margin-top: 14.5rem
+  &-wrapper
+    height: 100%
+    padding: 4.6rem 2rem 2rem
+    background: url( '../images/stage-2.webp' ) center / cover no-repeat
+  &-card
+    padding: 1.4rem 0
+    display: flex
+    gap: 1.5rem
+    &__number
+      width: 3.6rem
+      height: 3.6rem
+      background: white
+      display: flex
+      align-items: center
+      justify-content: center
+      flex-shrink: 0
+      border-radius: 50%
+      font-weight: 600
+      font-size: 2rem
+    &__text
+      line-height: 1.25
+  &-control
+    margin-top: 2.6rem
 
 // member
 
@@ -163,7 +200,7 @@
     padding-bottom: 14rem
   &__container
     position: relative
-  &__slider
+  &-slider
     margin-top: 4rem
     @media (min-width: $screen-md)
       margin-top: 6rem
@@ -175,6 +212,18 @@
       right: 1.5rem
     &__button svg
       pointer-events: none
+  &-card
+    text-align: center
+    &__image
+      width: 25rem
+      @media (min-width: $screen-md)
+        width: 32rem
+    &__name
+      margin-top: 2.1rem
+      font-weight: 700
+      font-size: 2.4rem
+    &__button
+      margin-top: 1.7rem
 
 // footer
 

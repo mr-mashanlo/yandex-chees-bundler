@@ -4,24 +4,29 @@
   &-list
     display: flex
     &__item
-      text-align: center
       flex-shrink: 0
       transition: .5s
-    &__image
-      width: 25rem
-      @media (min-width: $screen-md)
-        width: 32rem
-    &__name
-      margin-top: 2.1rem
-      font-weight: 700
-      font-size: 2.4rem
-    &__button
-      margin-top: 1.7rem
+      padding-right: 3rem
+      box-sizing: content-box
   &-control
     display: flex
     gap: 1.5rem
     align-items: center
     justify-content: center
-    // @media (min-width: $screen-md)
   &-counter
     font-size: 1.6rem
+    color: $gray
+    &__position
+      color: $text-color
+  &-dots
+    display: flex
+    align-items: center
+    justify-content: center
+    gap: .5rem
+    &__item
+      width: 1rem
+      height: 0.1rem
+      border-radius: 1rem
+      background: $gray
+      &--active
+        background: $text-color
