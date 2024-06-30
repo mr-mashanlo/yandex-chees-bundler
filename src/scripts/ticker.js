@@ -1,13 +1,26 @@
-function ticker( options ) {
-  const ticker = document.querySelectorAll( options.element );
-  ticker.forEach( item => {
-    item.innerHTML = doubleTickerElements( item );
-  } );
+class Ticker {
+
+  defaultOptions = {
+    element: '.slider',
+  };
+
+  constructor( options ) {
+    this.options = { ...this.defaultOptions, ...options };
+    this.init();
+  }
+
+  init = () => {
+    const ticker = document.querySelectorAll( this.options.element );
+    ticker.forEach( item => {
+      item.innerHTML = this.doubleTickerElements( item );
+    } );
+  };
+
+  doubleTickerElements = ( ticker ) => {
+    const tickerList = ticker.innerHTML;
+    return tickerList + tickerList;
+  };
+
 }
 
-function doubleTickerElements( ticker ) {
-  const tickerList = ticker.innerHTML;
-  return tickerList + tickerList;
-}
-
-export default ticker;
+export default Ticker;
