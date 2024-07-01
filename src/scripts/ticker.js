@@ -1,7 +1,7 @@
 class Ticker {
 
   defaultOptions = {
-    element: '.slider',
+    element: '.slider'
   };
 
   constructor( options ) {

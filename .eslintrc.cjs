@@ -54,6 +54,10 @@ module.exports = {
     'max-len': [
       'error',
       { 'code': 400 }
+    ],
+    'comma-dangle': [
+      'error',
+      { arrays: 'never', objects: 'never', imports: 'never', exports: 'never', functions: 'never' }
     ]
   }
 };
